@@ -2,7 +2,7 @@ use crate::Token;
 use std::io::{self, Write};
 
 #[cfg(feature = "raw-mode")]
-use crossterm::{terminal::{enable_raw_mode, disable_raw_mode}};
+use crossterm::terminal::{disable_raw_mode, enable_raw_mode};
 
 pub fn run(tokens: Vec<(usize, Token)>) {
     let mut instruction_ptr: usize = 0;
@@ -55,7 +55,7 @@ pub fn run(tokens: Vec<(usize, Token)>) {
 #[cfg(feature = "raw-mode")]
 fn getchar() -> char {
     enable_raw_mode();
-        //todo figure out how to get char here
+    //todo figure out how to get char here
     disable_raw_mode();
 }
 

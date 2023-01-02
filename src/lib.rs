@@ -1,5 +1,5 @@
-pub mod lex;
 pub mod interp;
+pub mod lex;
 pub mod transpile;
 
 #[cfg(feature = "cc")]
@@ -22,17 +22,19 @@ pub enum Token {
 }
 
 /// Expects a Vec<u8> with unicode bytes. The easiest way to make this work is with `<String>.chars().map(|c| c as u8).collect::<Vec<u8>>();`
-pub fn interpret (code: Vec<u8>) {
+pub fn interpret(code: Vec<u8>) {
     interp::run(lex::tokenise(lex::trim_non_code(code).unwrap()));
 }
 
 #[cfg(not(feature = "cc"))]
-pub fn transpile (code: Vec<u8>) -> Result<String, String> {
-    Ok(transpile::transpile(lex::tokenise(lex::trim_non_code(code)?)))
+pub fn transpile(code: Vec<u8>) -> Result<String, String> {
+    Ok(transpile::transpile(lex::tokenise(lex::trim_non_code(
+        code,
+    )?)))
 }
 
 #[cfg(feature = "cc")]
-pub fn transpile (code: Vec<u8>, use_cc: bool) -> Result<String, String> {
+pub fn transpile(code: Vec<u8>, use_cc: bool) -> Result<String, String> {
     let s = transpile::transpile(lex::tokenise(lex::trim_non_code(code)?));
     if use_cc {
         cc::compile(&s);
