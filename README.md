@@ -55,6 +55,6 @@ This project is nearly complete. The remaining goals are listed below:
 
 - [ ] Use the `cc` crate to natively compile the auto-generated C code.
 - [ ] Implement TTY Raw Mode (using `crossterm`, probably<!-- I prefer Termion but Windows Support is Important -->) so that the interpreter can properly execute `,` instructions.
-- [ ] Seperate code into more organised modules to avoid the current spaghetti situation.
+- [x] Seperate code into more organised modules to avoid the current spaghetti situation.
 - [ ] Proper Unit Testing
 - [ ] Proper Rustdoc
