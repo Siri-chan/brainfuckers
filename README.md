@@ -10,7 +10,7 @@ This is in addition to the `.` and `,` operators, which will output while the pr
 If `,` recieves an EOF, the program will panic.  
 The distribution will panic on integer over/underflows in any cell also.  
 LF vs CRLF in operating systems should not matter, as the program ignores any non-command characters, and should output platform-agnostically thanks to rust's `println!` macro.  
-BOptimisations are best made by the code author, so be careful to prune your code properly in order to ensure best performance.
+Optimisations are best made by the code author, so be careful to prune your code properly in order to ensure best performance.
 
 ## Usage
 
@@ -39,6 +39,16 @@ while (*ptr) {
 while (--*ptr){}
 ```
 
+## License
+
+Copyright (c) Kira K. 2023
+
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at <https://mozilla.org/MPL/2.0/>.
+
+A copy of the MPL dated `2023-01-02` exists in the `LICENSE` file.
+
 ## Still Unfinished
 
 This project is nearly complete. The remaining goals are listed below:
@@ -46,3 +56,5 @@ This project is nearly complete. The remaining goals are listed below:
 - [ ] Use the `cc` crate to natively compile the auto-generated C code.
 - [ ] Implement TTY Raw Mode (using `crossterm`, probably<!-- I prefer Termion but Windows Support is Important -->) so that the interpreter can properly execute `,` instructions.
 - [ ] Seperate code into more organised modules to avoid the current spaghetti situation.
+- [ ] Proper Unit Testing
+- [ ] Proper Rustdoc

@@ -2,6 +2,11 @@
 name = "brainfucke-rs"
 version = "0.1.0"
 edition = "2021"
+license = "MPL-2.0"
+repository = "https://github.com/Siri-chan/brainfuckers/"
+readme = "README.md"
+description = "A brainfuck interpreter and transpiler"
+authors = ["Kira K. <siri1999kira@yahoo.co.jp>"]
 
 [dependencies]
 cc = { version = "1.0", optional = true }
@@ -10,4 +15,4 @@ crossterm = { version = "0.13", optional = true }
 [features]
 default = ["cc"]
 cc = ["dep:cc"]
-raw-mode = ["dep:crossterm"] # CURRENTLY BROKEN
+raw-mode = ["dep:crossterm"] # ! CURRENTLY BROKEN DO NOT USE ! #
