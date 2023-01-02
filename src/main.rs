@@ -18,6 +18,7 @@ fn main() {
     let mut args: Vec<String> = env::args().collect();
     let mut file: Vec<u8> = Vec::new();
     let mut should_transpile = false;
+    #[cfg(feature = "cc")]
     let mut compile_transpilation = false;
 
     args.remove(0);
@@ -44,7 +45,9 @@ fn main() {
                         return;
                     }
                     'c' => should_transpile = true,
+                    #[cfg(feature = "cc")]
                     'C' => compile_transpilation = true,
+
                     _ => unimplemented!("unknown argument"), // !fixme we should DEFINITELY NOT panic on an unknown argument
                 }
             }
@@ -69,7 +72,12 @@ fn main() {
     if should_transpile {
         println!("SEE BELOW FOR GENERATED C CODE:\n================================================================================");
         println!("/*\n\tBRAINFUCKERS AUTO GENERATED C CODE FROM BRAINFUCK\n*/");
-        println!("{}", transpile::transpile(tokens));
+        let s = transpile::transpile(tokens);
+        println!("{}", s);
+        #[cfg(feature = "cc")]
+        if compile_transpilation {
+            cc::compile(&s);
+        }
     } else {
         interp::run(tokens);
     }

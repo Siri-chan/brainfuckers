@@ -21,6 +21,6 @@ cc = { version = "1.0", optional = true }
 crossterm = { version = "0.13", optional = true }
 
 [features]
-default = ["cc"]
+default = []#["cc"]
 cc = ["dep:cc"]
 raw-mode = ["dep:crossterm"] # ! CURRENTLY BROKEN DO NOT USE ! #

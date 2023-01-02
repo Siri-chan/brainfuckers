@@ -27,7 +27,7 @@ pub fn interpret (code: Vec<u8>) {
 }
 
 #[cfg(not(feature = "cc"))]
-pub fn transpile (code: Vec<u8>, use_cc: bool) -> Result<String, String> {
+pub fn transpile (code: Vec<u8>) -> Result<String, String> {
     Ok(transpile::transpile(lex::tokenise(lex::trim_non_code(code)?)))
 }
 
