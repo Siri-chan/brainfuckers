@@ -21,7 +21,6 @@ fn main() {
     #[cfg(feature = "cc")]
     let mut compile_transpilation = false;
 
-    args.remove(0);
     'search: loop {
         if args.is_empty() {
             read_stdin(&mut file).unwrap();
