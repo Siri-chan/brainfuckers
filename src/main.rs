@@ -75,7 +75,7 @@ fn main() {
         println!("{}", s);
         #[cfg(feature = "cc")]
         if compile_transpilation {
-            cc::compile(&s);
+            transpile::cc::compile(&s);
         }
     } else {
         interp::run(tokens);
@@ -91,6 +91,7 @@ fn read_file(filename: &String, buffer: &mut Vec<u8>) -> io::Result<()> {
 fn display_help() {
     unimplemented!("only god can help you now")
 }
+
 
 fn display_version() {
     println!("++++++++++[>+++++++>+++++++++++>++++++++++<<<-]>----.>++++.>---.++++++++.<----.>---.<+++++++.>---.++++++++.------.<---.+.");

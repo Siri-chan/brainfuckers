@@ -37,6 +37,8 @@ while (*ptr) {
 }
 // Human-Generated C Code:
 while (--*ptr){}
+// or even just
+*ptr = 0;
 ```
 
 ## License
@@ -53,7 +55,7 @@ A copy of the MPL dated `2023-01-02` exists in the `LICENSE` file.
 
 This project is nearly complete. The remaining goals are listed below:
 
-- [ ] Use the `cc` crate to natively compile the auto-generated C code.
+- [ ] C compilation on Windows
 - [ ] Implement TTY Raw Mode (using `crossterm`, probably<!-- I prefer Termion but Windows Support is Important -->) so that the interpreter can properly execute `,` instructions.
 - [x] Seperate code into more organised modules to avoid the current spaghetti situation.
 - [ ] Proper Unit Testing

@@ -1,4 +1,10 @@
-/* This File will be used for interface with the CC Package, and can be disabled. */
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
+/* This File will be used for interface with the CC Feature, and can be disabled. */
 
 use std::{env, fs::File, io::Write};
 

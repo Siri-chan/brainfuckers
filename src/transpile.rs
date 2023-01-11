@@ -1,4 +1,13 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 use crate::Token;
+
+#[cfg(feature = "cc")]
+pub mod cc;
 
 pub fn transpile(tokens: Vec<(usize, Token)>) -> String {
     let mut code = "#include<stdio.h>\n#include<stdlib.h>\nint main(void){\nchar array[30000] = {0}; char *ptr = array;\n".to_string();

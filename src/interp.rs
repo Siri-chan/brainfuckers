@@ -1,3 +1,9 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
 use crate::Token;
 use std::io::{self, Write};
 
@@ -45,7 +51,7 @@ pub fn run(tokens: Vec<(usize, Token)>) {
                 let n: u8 = getchar() as u8;
                 data[data_ptr] = n;
             }
-            _ => unimplemented!(), // todo Token::get is currently poorly implemented bc im too lazy to sort out pulling a terminal into raw mode
+            _ => unimplemented!(), // todo Token::get is currently poorly implemented bc im too lazy to sort out getchar
         }
         instruction_ptr += 1;
     }

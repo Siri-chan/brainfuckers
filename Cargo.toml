@@ -21,5 +21,5 @@ crossterm = { version = "0.13", optional = true }
 
 [features]
 default = ["cc"]
-cc = []
+cc = [] # ! ONLY WORKS ON UNIXES WITH A PATH CONTAINING A SYMBOLIC LINK `cc` TO A C COMPILER ! #
 raw-mode = ["dep:crossterm"] # ! CURRENTLY BROKEN DO NOT USE ! #
