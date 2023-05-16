@@ -6,6 +6,7 @@
 
 use crate::Token;
 use std::io::{self, Write};
+use getkey::*;
 
 #[cfg(feature = "raw-mode")]
 use crossterm::terminal::{disable_raw_mode, enable_raw_mode};
@@ -48,7 +49,12 @@ pub fn run(tokens: Vec<(usize, Token)>) {
                 }
             }
             Token::get => {
-                let n: u8 = getchar() as u8;
+                let n: u8 = match getkey().unwrap() {
+                    Key::Char(c) => {
+                        c as u8
+                    }
+                    _ => panic!("Not a valid character") //todo this should be safer than this
+                };
                 data[data_ptr] = n;
             }
             _ => unimplemented!(), // todo Token::get is currently poorly implemented bc im too lazy to sort out getchar
@@ -56,18 +62,4 @@ pub fn run(tokens: Vec<(usize, Token)>) {
         instruction_ptr += 1;
     }
     io::stdout().flush().unwrap();
-}
-
-#[cfg(feature = "raw-mode")]
-fn getchar() -> char {
-    enable_raw_mode();
-    //todo figure out how to get char here
-    disable_raw_mode();
-}
-
-#[cfg(not(feature = "raw-mode"))]
-fn getchar() -> char {
-    let mut input: String = String::new();
-    io::stdin().read_line(&mut input);
-    return input.chars().next().unwrap();
 }

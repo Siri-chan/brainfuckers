@@ -92,7 +92,6 @@ fn display_help() {
     unimplemented!("only god can help you now")
 }
 
-
 fn display_version() {
     println!("++++++++++[>+++++++>+++++++++++>++++++++++<<<-]>----.>++++.>---.++++++++.<----.>---.<+++++++.>---.++++++++.------.<---.+.");
     println!("Brainfuckers: (Version {})", VER);
