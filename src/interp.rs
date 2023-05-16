@@ -5,8 +5,8 @@
  */
 
 use crate::Token;
-use std::io::{self, Write};
 use getkey::*;
+use std::io::{self, Write};
 
 #[cfg(feature = "raw-mode")]
 use crossterm::terminal::{disable_raw_mode, enable_raw_mode};
@@ -50,10 +50,8 @@ pub fn run(tokens: Vec<(usize, Token)>) {
             }
             Token::get => {
                 let n: u8 = match getkey().unwrap() {
-                    Key::Char(c) => {
-                        c as u8
-                    }
-                    _ => panic!("Not a valid character") //todo this should be safer than this
+                    Key::Char(c) => c as u8,
+                    _ => panic!("Not a valid character"), //todo this should be safer than this
                 };
                 data[data_ptr] = n;
             }
